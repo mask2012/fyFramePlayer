@@ -1,5 +1,6 @@
 # fyFramePlayer
 mask's video player based on [FramePlayer](https://github.com/vagnervjs/frame-player)
+改进了FramePlayer必须ajax请求，要求同域的问题，并增加了多个动画连续播放，播放次数和播完后回调
 
 ##功能
 允许在手机环境下不新开窗口播放视频，原理是不播放video，而是不断改变img的src值(base64序列)。视频需事先转换成json对象。
@@ -8,7 +9,7 @@ mask's video player based on [FramePlayer](https://github.com/vagnervjs/frame-pl
 * rate: 10,                 //每秒播放几帧
 * fixedSize:true,			  //如为true，动画宽高根据jquery选择的元素宽高；如为false，则根据屏幕宽度100%设定动画高度，此时忽略width和height参数
 * movieName:movieYaodou,    //动画名称，也是变量名。这个是必须值，否则找不到动画内容。支持多个动画连续播放，以逗号分隔
-* playTimes:1,			  //如果有playTimes，则播放n次后会调用onPlayEnd()并停止
+* playTimes:1,			  //如果有playTimes，则播放n次后会调用onPlayEnd()并停止。如为0或者不填此参数，则无限播放
 * onPlayEnd: function(){}	  //动画完成后回调
 
 
