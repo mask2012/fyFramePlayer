@@ -1,210 +1,50 @@
+<!--
+   index.html
+   A video player without video files, just JSON. Based on "images frames" thought to mobile devices!
+
+   @category
+   @author Vagner Santana
+   @link http://github.com/vagnervjs/frame-video
+   @version:0.1
+   @since: 04/10/2013
+-->
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CountDown plugin</title>
+    <title>Frame Player</title>
 
     <style>
-    body{background-color: #fff; color: #444; padding: 20px; font-family: "Microsoft Yahei",SimHei,"Helvetica Neue","DejaVu Sans",Tahoma,"Hiragino Sans GB";}
-    pre{background-color: #eee; padding: 20px; margin-bottom: 10px; font-size: 16px;}
-    .counter{padding: 20px; background-color: #ccc; margin-bottom: 40px;}
-    .countdown{font-size: 18px; margin-bottom: 10px;}
-    .notifing{color: #f00;}
-    .countdown_unit{margin: 0 8px 0 2px;}
-    p{margin: 0;}
-    button{padding: 5px 20px; font-size: 18px; cursor: pointer;}
-    .counter:nth-child(1){ background-color: #ddd9d1;}
-    .counter:nth-child(2){ background-color: #e2dbc9;}
-    .counter:nth-child(3){ background-color: #cac9e2;}
-    .counter:nth-child(4){ background-color: #c9dee2;}
-    .counter:nth-child(5){ background-color: #c9e2d7;}
+    body{background-color: #444;}
+      .frameplayer{width: 200px; height: 200px;}
     </style>
 </head>
 <body>
-
-    
-    <div class="counter">
-      <div id="count-down1" class="countdown"></div>
-      <p>无alwaysShown参数，最大单位为0后不再显示; addZero:true会在分和秒前加零</p>
-      <p>notySeconds:60  在倒计时剩60秒时为倒计时容器div添加class="notifing",notifing为红色</p>
-      <pre>
-$('#count-down1').fyCountDown({
-  countdownSeconds: 65,
-  addZero:true,
-  notySeconds:60,
-  notyClass:'notifing',
-  onFinish: function(){
-    //
-  }
-});
-      </pre>
-    </div>
-
-    <div class="counter">
-      <div id="count-down2" class="countdown"></div>
-      <p>有alwaysShown参数，最大单位为0后依然显示。d为天，h为小时，m为分，d为秒；  addZero:false不会在分和秒前加零</p>
-      <p>notySeconds:55  在倒计时剩55秒时为倒计时容器div添加class="notifing"</p>
-      <pre>
-$('#count-down2').fyCountDown({
-  countdownSeconds: 65,
-  alwaysShown:'m',
-  addZero:false,
-  notySeconds:55,
-  notyClass:'notifing',
-  onFinish: function(){
-    //
-  }
-});
-      </pre>
-    </div>
-
-    <div class="counter">
-      <div id="count-down3" class="countdown"></div>
-      <p>最大倒计时单位为天</p>
-      <pre>
-$('#count-down3').fyCountDown({
-  countdownSeconds: 112265,
-  alwaysShown:'d',
-  addZero:true,
-  onFinish: function(){
-    //
-  }
-});
-      </pre>
-    </div>
-
-    <div class="counter">
-      <div id="count-down4" class="countdown"></div>
-      <p>倒计时结束回调</p>
-      <pre>
-$('#count-down4').fyCountDown({
-  countdownSeconds: 10,
-  // alwaysShown:'d',
-  addZero:true,
-  notySeconds:5,
-  notyClass:'notifing',
-  onFinish: function(){
-    console.log('我是第四个倒计时结束后执行的动作');
-  }
-});
-      </pre>
-    </div>
-
-
-    <div class="counter">
-      <div id="count-down5" class="countdown"></div>
-      <p>单位自定义文字</p>
-      <pre>
-$('#count-down5').fyCountDown({
-  countdownSeconds: 3000,
-  // alwaysShown:'d',
-  addZero:true,
-  unit:{
-    d:'day',
-    h:'hour',
-    m:'min',
-    s:'sec',
-  },
-  onFinish: function(){
-    //
-  }
-});
-      </pre>
-    </div>
-
-
-
-    <div class="counter">
-      <div id="count-down6" class="countdown"></div>
-      <p>只倒计时秒</p>
-      <pre>
-$('#count-down6').fyCountDown({
-  countdownSeconds: 100,
-  onlySecond:true,
-  onFinish: function(){
-    //
-  }
-});
-      </pre>
-    </div>
-
-    <button id="btn-refresh">重来</button>
+    <div id="player1" class="frameplayer"></div>
+    <div id="player2" class="frameplayer"></div>
     
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="jquery.fyCountDown-1.0.js"></script>
+    <script src="jquery.fyFramePlayer-1.0.js"></script>
+    <script src="yaodou.js"></script>
+    <script src="anniu.js"></script>
+    <script src="zhonghua.js"></script>
     <script>
-      $('#btn-refresh').click(function() {
-        window.location.reload()
-      });
-      $('#count-down1').fyCountDown({
-        countdownSeconds: 65,
-        // alwaysShown:'m',
-        addZero:true,
-        notySeconds:60,
-        notyClass:'notifing',
-        onFinish: function(){
-          //
-        }
+      $('#player1').fyFramePlayer({
+        rate: 10,
+        fixedSize:true,
+        playTimes:2,
+        movieName:'movieYaodou,movieAnniu,zhonghua',
+        onPlayEnd: function(){}
       });
 
-
-      $('#count-down2').fyCountDown({
-        countdownSeconds: 65,
-        alwaysShown:'m',
-        addZero:false,
-        notySeconds:55,
-        notyClass:'notifing',
-        onFinish: function(){
-          //
-        }
+       $('#player2').fyFramePlayer({
+        rate: 10,
+        fixedSize:false,
+        // playTimes:0,
+        movieName:'movieAnniu',
+        onPlayEnd: function(){}
       });
-
-      $('#count-down3').fyCountDown({
-        countdownSeconds: 112265,
-        alwaysShown:'d',
-        addZero:true,
-        onFinish: function(){
-          //
-        }
-      });
-
-      $('#count-down4').fyCountDown({
-        countdownSeconds: 10,
-        // alwaysShown:'d',
-        addZero:true,
-        notySeconds:5,
-        notyClass:'notifing',
-        onFinish: function(){
-          console.log('我是第四个倒计时结束后执行的动作');
-        }
-      });
-
-      $('#count-down5').fyCountDown({
-        countdownSeconds: 3000,
-        // alwaysShown:'d',
-        addZero:true,
-        unit:{
-          d:'day',
-          h:'hour',
-          m:'min',
-          s:'sec',
-        },
-        onFinish: function(){
-          //
-        }
-      });
-
-
-      $('#count-down6').fyCountDown({
-        countdownSeconds: 100,
-        onlySecond:true,
-        onFinish: function(){
-          //
-        }
-      });
-
-      
 
 
     </script>

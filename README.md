@@ -1,22 +1,16 @@
-# fyCountDown
+# fyFramePlayer
+mask's video player based on [FramePlayer](https://github.com/vagnervjs/frame-player)
+改进了FramePlayer必须ajax请求，要求同域的问题，并增加了多个动画连续播放，播放次数和播完后回调
 
 ##功能
-倒计时插件
+允许在手机环境下不新开窗口播放视频，原理是不播放video，而是不断改变img的src值(base64序列)。视频需事先转换成json对象。
 
 ##参数释义
-* countdownSeconds:20,     //默认倒数10秒
-* alwaysShown:'',          //默认如果最大单位变为0后不再显示
-* addZero:true,            //默认如果数字为个位数，会在前边加0
-* onlySeconds:false,       //默认不只倒计时秒数
-* notySeconds:10,          //默认倒计时提醒为10秒
-* notyClass:'notifing',    //默认倒计时提醒class为nitifing
-* unit:{                   //默认倒计时单位文字为天，时，分，秒
-    d:'天',
-    h:'时',
-    m:'分',
-    s:'秒'
-  },
-* onFinish:function(){}    //默认倒计时完成后回调为空
+* rate: 10,                 //每秒播放几帧
+* fixedSize:true,			  //如为true，动画宽高根据jquery选择的元素宽高；如为false，则根据屏幕宽度100%设定动画高度，此时忽略width和height参数
+* movieName:movieYaodou,    //动画名称，也是变量名。这个是必须值，否则找不到动画内容。支持多个动画连续播放，以逗号分隔
+* playTimes:1,			  //如果有playTimes，则播放n次后会调用onPlayEnd()并停止。如为0或者不填此参数，则无限播放
+* onPlayEnd: function(){}	  //动画完成后回调
 
 
 ##调用示例
