@@ -7,6 +7,7 @@
  *
  *
 	rate: 10,                 //每秒播放几帧
+	delay: 1300,			  //第一帧延迟一段时间后开始播放
 	fixedSize:true,			  //是否为固定宽高,如果false，则根据屏幕宽度100%设定动画高度，避免动画变形,此时忽略width和height参数
 	movieName:movieYaodou,    //动画名称，也是变量名。这个是必须值，否则找不到动画内容
 	playTimes:1,			  //如果有playTimes，则播放n次后会调用onPlayEnd()
@@ -18,6 +19,7 @@
 	$.fn.fyFramePlayer=function(options){
 		var opts=$.extend({   //整合默认参数和自定义参数
 			rate: 10,
+			delay: 0,
 			fixedSize:true,
 			// movieName:movieYaodou,
 			playTimes:0,
@@ -88,7 +90,13 @@
 	            }, Math.round(1000 / opts.rate));
 	        }
 	        if(tempMovie.length!=0){
-	        	playIt();
+	        	img.src = tempMovie[0];
+	        	if(opts.delay!=0){
+	        		setTimeout(function(){playIt()},opts.delay);
+	        	}else{
+	        		playIt();
+	        	}
+	        	
 	        }
 		};
 
