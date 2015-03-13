@@ -2,16 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
     <title>Frame Player</title>
 
     <style>
-    body{background-color: #444;}
+    body{background-color: #666; color: #f00; font-family: "Microsoft Yahei",SimHei,"Helvetica Neue","DejaVu Sans",Tahoma,"Hiragino Sans GB";}
+    h1{color: #f0f0f0; font-weight: normal; font-size: 20px;}
       .frameplayer{width: 200px; height: 200px;}
+      .frameplayer_full{ width: 100%;}
     </style>
 </head>
 <body>
+    <h1>基本调用，循环播放，固定大小，每秒播放10朕</h1>
     <div id="player1" class="frameplayer"></div>
-    <div id="player2" class="frameplayer"></div>
+
+
+    <h1>播放完成后定格在最后一帧</h1>
+    <div id="player4" class="frameplayer"></div>
+
+
+    <h1>播放3次,不固定大小，根据屏幕宽度自适应大小,延时1.4秒播放,播放完毕后回调</h1>
+    <div id="player2_callback"></div>
+    <div id="player2" class="frameplayer_full"></div>
+
+    <h1>连续播放多个动画</h1>
+    <div id="player3" class="frameplayer"></div>
+
+    
     
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
@@ -23,19 +40,37 @@
       $('#player1').fyFramePlayer({
         rate: 10,
         fixedSize:true,
-        delay:20000,
-        // playTimes:2,
+        movieName:'movieYaodou'
+      });
+
+      $('#player2').fyFramePlayer({
+        rate: 10,
+        fixedSize:false,
+        delay:1400,
+        playTimes:3,
+        movieName:'movieYaodou',
+        onPlayEnd: function(){
+            $('#player2_callback').html('播放完毕');
+        }
+      });
+
+       $('#player3').fyFramePlayer({
+        rate: 10,
+        fixedSize:true,
+        // playTimes:1,
+        // stopOnFinish:true,
         movieName:'movieYaodou,movieAnniu,zhonghua',
         onPlayEnd: function(){}
       });
 
-       $('#player2').fyFramePlayer({
-        rate: 10,
-        fixedSize:false,
-        // playTimes:0,
-        movieName:'movieAnniu',
-        onPlayEnd: function(){}
-      });
+        $('#player4').fyFramePlayer({
+            rate: 10,
+            fixedSize:true,
+            playTimes:1,
+            stopOnFinish:true,
+            movieName:'movieAnniu',
+            onPlayEnd: function(){}
+        });
 
 
     </script>

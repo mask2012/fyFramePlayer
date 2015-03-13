@@ -23,6 +23,7 @@
 			fixedSize:true,
 			// movieName:movieYaodou,
 			playTimes:0,
+			stopOnFinish:false,
 			onPlayEnd: function(){}
 		},options);
 
@@ -76,8 +77,12 @@
                         j++;
                         if(j==opts.playTimes){
                             canPlay=false;
-                            divCont.html(''); //停止后清空元素，以备后续再次调用是生成新元素
                             opts.onPlayEnd(); //停止后执行回调
+                            if(opts.stopOnFinish){
+                            	img.src = tempMovie[tempMovie.length-1];
+                            }else{
+                            	divCont.html(''); //停止后清空元素，以备后续再次调用时生成新元素
+                            }
                         }
                     }
                     img.src = tempMovie[i];
