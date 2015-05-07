@@ -8,69 +8,151 @@
     <style>
     body{background-color: #666; color: #f00; font-family: "Microsoft Yahei",SimHei,"Helvetica Neue","DejaVu Sans",Tahoma,"Hiragino Sans GB";}
     h1{color: #f0f0f0; font-weight: normal; font-size: 20px;}
-      .frameplayer{width: 200px; height: 200px;}
-      .frameplayer_full{ width: 100%;}
+    .frameplayer{width: 200px; height: 200px; position: relative; background-color: #000;}
+    .frameplayer .fp-img{vertical-align: top;}
+    .frameplayer .ico_player{ width: 64px; height: 48px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAABfCAMAAAD2z+gXAAAAaVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnbPKNAAAAInRSTlMAA6n1+knZuf3pDUHDmBUHLI/whWQ2yXpvXBvd0+Mir1Wg172q5AAAAxRJREFUaN7VmlmWpCAQRRFQHMAR55n9L7LVzkp++pwsgaqw7waumcEYPPQBL4uHJa/9k022bVXsGK+M8Waagi+mqeGMrSvei6ptu94/SfJliGMPmeDF6VInfVeJnfFpnEtyQkP1HUJKTsp5nDjDojq+pz4+JfuszdL8kBZCrHyaS62zJKTlHPBViKLtk3z4x39yeBNZ7WyKSKh+kpBEAceV9JN60PpMlMSt+HOJSp6+/cuofh+SvP0+VQC0b3+lIFizr/IzBUETv/xxoyCI8pc/jxQEdHv5t1CBUL38hYKBZXr4QTAul38YFQB6BUqIAkJe/l5B0V3+TkEh9PAHgcV6+EMQDIc/nRQUZa1XXwjCDWzz10cAqe5AnX6tuH34YDJwuwN4WN0Be3nhbsBMKYr5TT/yEuaqCHOOhuCuH6G0nxxNwATl813/ySKcFIH4KCEmfuTVLHTi9w38F6lsrP1UGvovFvuZ0KKeGvqvIqyWM6FAXWjsv2ZCYzUMMKqUiV8zVDZFYEiY+nURsHkRJoRN/ZpYctMijIiZ+zWpaREi1Fj5dRF2oyIQFFj5NbHZTECjpV+TtpGBf7b36yIIctsf2fs12cbpTX/pwq9Ju/men7jy6yKUd/zUmV8XoaHf94cO/boI47f9yp1f48kS9PfLEbL+PqeQ478o/6f573z9A1z/84KA7n+zuo3L/Z+q+7g7/xBlAHV0/mtNz39Ozr+9xfnX/vyf7xbnf/D7j/H9T//1FmDL+y+2vf+C3/+B+x/m/Z/VSf/HtP9VOOp/gff/gPuf4P1fVMD2v1EH2f9/wPsH6PvPA96/AN//xgH2/ZPHT3j/lQqK7hHv/wtc/uER+Q/o/AvqIfM/cCtwuD0k/wWWf3tI/g88/wid/8z2UoeLfwVKCE/Rm7ROfFlhHvx4/peWI8dFp/O/SOPFQ5707ZV/Dpzmn0k0NmwXopX+lX/+xBk6r/0z/41ZE8yRUf47moOGr6LopJ8c1swwiX7m3xP/YOu7tq0Exut6xt+DizG4+BuAx1gUVdvJzT9I6mVIP1r/AOYmVaCSWXXvAAAAAElFTkSuQmCC) 0 0 no-repeat; -webkit-background-size: 100%; background-size: 100%; position: absolute; left: 50%; top: 50%; z-index: 10; -webkit-transform: translate(-50%,-50%); transform: translate(-50%,-50%); display: none;}
+    .frameplayer_full{ width: 100%;}
+
+    pre{font-size: 16px; color: #222; border: 1px #000 solid; background-color: #fefefe; padding: 25px; margin-bottom: 80px;}
     </style>
 </head>
 <body>
+     <h1>请注意，此demo必须在服务器环境下查看！</h1>
+
+
+<!-- 
     <h1>基本调用，循环播放，固定大小，每秒播放10朕</h1>
     <div id="player1" class="frameplayer"></div>
+    <pre>
+$('#player1').fyFramePlayer({
+    rate: 10,
+    fixedSize:true,
+    movieName:'movieYaodou'
+  });
+    </pre>
 
 
     <h1>播放完成后定格在最后一帧</h1>
     <div id="player4" class="frameplayer"></div>
+    <pre>
+$('#player4').fyFramePlayer({
+    rate: 10,
+    fixedSize:false,
+    playTimes:1,
+    stopOnFinish:true,
+    movieName:'movieAnniu',
+    onPlayEnd: function(){}
+});
+    </pre>
 
 
     <h1>播放3次,不固定大小，根据屏幕宽度自适应大小,延时1.4秒播放,播放完毕后回调</h1>
     <div id="player2_callback"></div>
     <div id="player2" class="frameplayer_full"></div>
+    <pre>
+$('#player2').fyFramePlayer({
+    rate: 10,
+    fixedSize:false,
+    delay:1400,
+    playTimes:3,
+    movieName:'movieYaodou',
+    onPlayEnd: function(){
+        $('#player2_callback').html('播放完毕');
+    }
+  });
+    </pre>
 
     <h1>连续播放多个动画</h1>
     <div id="player3" class="frameplayer"></div>
+    <pre>
+$('#player3').fyFramePlayer({
+    rate: 10,
+    fixedSize:true,
+    // playTimes:1,
+    // stopOnFinish:true,
+    movieName:'movieYaodou,movieAnniu,zhonghua',
+    onPlayEnd: function(){}
+  });
+    </pre>
 
-    
-    
+
+    <h1>播放影片1</h1>
+    <div id="player5" class="frameplayer"></div> -->
+
+
+    <h1>播放影片2</h1>
+    <div id="player6" class="frameplayer"></div>
+  
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="jquery.fyFramePlayer-1.1.js"></script>
+    <script src="jquery.fyFramePlayer-1.2.js"></script>
     <script src="yaodou.js"></script>
     <script src="anniu.js"></script>
     <script src="zhonghua.js"></script>
+    <script src="ocean.js"></script>
+    <script src="ocean2.js"></script>
     <script>
-      $('#player1').fyFramePlayer({
-        rate: 10,
-        fixedSize:true,
-        movieName:'movieYaodou'
-      });
+      // $('#player1').fyFramePlayer({
+      //   rate: 10,
+      //   fixedSize:true,
+      //   movieName:'movieYaodou'
+      // });
 
-      $('#player2').fyFramePlayer({
-        rate: 10,
-        fixedSize:false,
-        delay:1400,
-        playTimes:3,
-        movieName:'movieYaodou',
-        onPlayEnd: function(){
-            $('#player2_callback').html('播放完毕');
-        }
-      });
+      // $('#player2').fyFramePlayer({
+      //   rate: 10,
+      //   fixedSize:false,
+      //   delay:1400,
+      //   playTimes:3,
+      //   movieName:'movieYaodou',
+      //   onPlayEnd: function(){
+      //       $('#player2_callback').html('播放完毕');
+      //   }
+      // });
 
-       $('#player3').fyFramePlayer({
-        rate: 10,
-        fixedSize:true,
-        // playTimes:1,
-        // stopOnFinish:true,
-        movieName:'movieYaodou,movieAnniu,zhonghua',
-        onPlayEnd: function(){}
-      });
+      //  $('#player3').fyFramePlayer({
+      //   rate: 10,
+      //   fixedSize:true,
+      //   // playTimes:1,
+      //   // stopOnFinish:true,
+      //   movieName:'movieYaodou,movieAnniu,zhonghua',
+      //   onPlayEnd: function(){}
+      // });
 
-        $('#player4').fyFramePlayer({
-            rate: 10,
-            fixedSize:true,
+      //   $('#player4').fyFramePlayer({
+      //       rate: 10,
+      //       fixedSize:false,
+      //       playTimes:1,
+      //       stopOnFinish:true,
+      //       movieName:'movieAnniu',
+      //       onPlayEnd: function(){}
+      //   });
+
+
+      //   $('#player5').fyFramePlayer({
+      //       rate: 12,
+      //       fixedSize:false,
+      //       playTimes:1,
+      //       stopOnFinish:true,
+      //       movieName:'ocean',
+      //       onPlayEnd: function(){}
+      //   });
+        
+
+
+        var a=$('#player6').fyFramePlayer({
+            rate: 24,
+            fixedSize:false,
             playTimes:1,
             stopOnFinish:true,
-            movieName:'movieAnniu',
+            movieName:'ocean2',
+            isMovie:true,
+            movieSound:'ocean.mp3',
             onPlayEnd: function(){}
         });
+        
+        
+
+
 
 
     </script>
