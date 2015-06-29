@@ -75,8 +75,8 @@
 
 	        //处理fixedSize参数
 	        if(opts.fixedSize){
-	        	img.style.width = divCont.width()+'px';
-            	img.style.height = divCont.height()+'px';
+	        	img.style.width = '100%';
+            	img.style.height = '100%';
             }else{  
             	divCont.width('100%');
             	divCont.height('auto');

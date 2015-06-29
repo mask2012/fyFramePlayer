@@ -20,7 +20,7 @@
      <h1>请注意，此demo必须在服务器环境下查看！</h1>
 
 
-<!-- 
+
     <h1>基本调用，循环播放，固定大小，每秒播放10朕</h1>
     <div id="player1" class="frameplayer"></div>
     <pre>
@@ -77,7 +77,7 @@ $('#player3').fyFramePlayer({
 
 
     <h1>播放影片1</h1>
-    <div id="player5" class="frameplayer"></div> -->
+    <div id="player5" class="frameplayer"></div>
 
 
     <h1>播放影片2</h1>
@@ -85,68 +85,68 @@ $('#player3').fyFramePlayer({
   
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="jquery.fyFramePlayer-1.2.js"></script>
+    <script src="jquery.fyFramePlayer-1.2.min.js"></script>
     <script src="yaodou.js"></script>
     <script src="anniu.js"></script>
     <script src="zhonghua.js"></script>
     <script src="ocean.js"></script>
     <script src="ocean2.js"></script>
     <script>
-      // $('#player1').fyFramePlayer({
-      //   rate: 10,
-      //   fixedSize:true,
-      //   movieName:'movieYaodou'
-      // });
+      $('#player1').fyFramePlayer({
+        rate: 10,
+        fixedSize:true,
+        movieName:'movieYaodou'
+      });
 
-      // $('#player2').fyFramePlayer({
-      //   rate: 10,
-      //   fixedSize:false,
-      //   delay:1400,
-      //   playTimes:3,
-      //   movieName:'movieYaodou',
-      //   onPlayEnd: function(){
-      //       $('#player2_callback').html('播放完毕');
-      //   }
-      // });
+      $('#player2').fyFramePlayer({
+        rate: 10,
+        fixedSize:false,
+        delay:1400,
+        playTimes:3,
+        movieName:'movieYaodou',
+        onPlayEnd: function(){
+            $('#player2_callback').html('播放完毕');
+        }
+      });
 
-      //  $('#player3').fyFramePlayer({
-      //   rate: 10,
-      //   fixedSize:true,
-      //   // playTimes:1,
-      //   // stopOnFinish:true,
-      //   movieName:'movieYaodou,movieAnniu,zhonghua',
-      //   onPlayEnd: function(){}
-      // });
+       $('#player3').fyFramePlayer({
+        rate: 10,
+        fixedSize:true,
+        // playTimes:1,
+        // stopOnFinish:true,
+        movieName:'movieYaodou,movieAnniu,zhonghua',
+        onPlayEnd: function(){}
+      });
 
-      //   $('#player4').fyFramePlayer({
-      //       rate: 10,
-      //       fixedSize:false,
-      //       playTimes:1,
-      //       stopOnFinish:true,
-      //       movieName:'movieAnniu',
-      //       onPlayEnd: function(){}
-      //   });
+        $('#player4').fyFramePlayer({
+            rate: 10,
+            fixedSize:false,
+            playTimes:1,
+            stopOnFinish:true,
+            movieName:'movieAnniu',
+            onPlayEnd: function(){}
+        });
 
 
-      //   $('#player5').fyFramePlayer({
-      //       rate: 12,
-      //       fixedSize:false,
-      //       playTimes:1,
-      //       stopOnFinish:true,
-      //       movieName:'ocean',
-      //       onPlayEnd: function(){}
-      //   });
+        $('#player5').fyFramePlayer({
+            rate: 12,
+            fixedSize:false,
+            playTimes:1,
+            stopOnFinish:true,
+            movieName:'ocean',
+            onPlayEnd: function(){}
+        });
         
 
 
         var a=$('#player6').fyFramePlayer({
-            rate: 24,
-            fixedSize:false,
-            playTimes:1,
-            stopOnFinish:true,
+            rate: 10,
+            fixedSize:true,
+            // playTimes:1,
+            // stopOnFinish:true,
             movieName:'ocean2',
             isMovie:true,
-            movieSound:'ocean.mp3',
+            // movieSound:'ocean.mp3',
             onPlayEnd: function(){}
         });
         
