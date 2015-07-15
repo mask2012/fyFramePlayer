@@ -122,6 +122,7 @@
                             	divCont.find('span').fadeIn(100);
                             }else if(opts.stopOnFinish){
                             	img.src = tempMovie[tempMovie.length-1];
+                            	return;
                             }else{
                             	//divCont.html(''); //停止后清空元素，以备后续再次调用时生成新元素
                             }
