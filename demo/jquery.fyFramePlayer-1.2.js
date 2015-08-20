@@ -12,7 +12,7 @@
 	movieName:movieYaodou,    //动画名称，也是变量名。这个是必须值，否则找不到动画内容
 	playTimes:1,			  //如果有playTimes，则播放n次后会调用onPlayEnd()
 	isMovie:false,            //默认不是影片，一旦为true，会自动加上影片播放按钮，并且会自动查找影片的音源
-	movieSound:'',            //配合isMovie true使用，影片的声音
+	stopOnFinish:false,		  //播放完成后是否停止在最后一帧，默认为false
 	onPlayEnd: function(){}	  //动画完成后回调
  *
  */
@@ -117,6 +117,8 @@
                             canPlay=false;
                             moviePlaying=false;
                             opts.onPlayEnd(); //停止后执行回调
+
+
                             if(opts.isMovie){
                             	img.src = tempMovie[0];
                             	divCont.find('span').fadeIn(100);
@@ -124,8 +126,13 @@
                             	img.src = tempMovie[tempMovie.length-1];
                             	return;
                             }else{
+                            	img.src = '';
+                            	divCont.html('');
+                            	return;
                             	//divCont.html(''); //停止后清空元素，以备后续再次调用时生成新元素
                             }
+
+                            console.log(img);
                         }
                     }
 
